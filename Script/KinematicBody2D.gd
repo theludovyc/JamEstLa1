@@ -24,3 +24,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	move_and_slide(dir * SPEED)
+	
+	for i in get_slide_count():
+		var col = get_slide_collision(i)
+		
+		if col.normal == Vector2(-1, 0):
+			get_tree().reload_current_scene()
