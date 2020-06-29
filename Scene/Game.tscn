@@ -91,6 +91,7 @@ texture = ExtResource( 4 )
 [node name="Pirate" type="AnimatedSprite" parent="KinematicBody2D"]
 position = Vector2( 4, -4 )
 frames = SubResource( 7 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]

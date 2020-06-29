@@ -10,18 +10,22 @@ onready var tileMaps = [$TileMap0, $TileMap1, $TileMap2]
 
 var delta:int = 0
 
-func initTileMap(index:int):
+func initTilemap(index:int):
 	var tileMap = tileMaps[index]
 	
 	tileMap.noise = noise
-	tileMap.generate(delta)
 	
-	tileMap.speed = 48
+	tileMap.speed = 80
 	
 func initTilemaps():
-	for i in tileMaps.size():
-		initTileMap(i)
-		delta += 20
+	initTilemap(0)
+	tileMaps[0].generateStart()
+	
+	initTilemap(1)
+	delta = tileMaps[1].generate(delta)
+	
+	initTilemap(2)
+	delta = tileMaps[2].generate(delta)
 
 func printTilemaps():
 	for i in tileMaps:

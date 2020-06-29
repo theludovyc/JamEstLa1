@@ -6,7 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 var dir:Vector2
 
-const SPEED = 20
+const SPEED = 40
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +18,7 @@ func _process(delta):
 	var hor = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	var ver = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	
-	dir = Vector2(0, ver)
+	dir = Vector2(hor, ver)
 	
 #	pass
 
