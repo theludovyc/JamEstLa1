@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 
 # Declare member variables here. Examples:
@@ -20,13 +20,10 @@ func _process(delta):
 	
 	dir = Vector2(hor, ver)
 	
-#	pass
-
-func _physics_process(delta):
-	move_and_slide(dir * SPEED)
+	position += dir * SPEED * delta
 	
-	for i in get_slide_count():
-		var col = get_slide_collision(i)
-		
-		if col.normal == Vector2(-1, 0):
-			get_tree().reload_current_scene()
+	position.x = clamp(position.x, 16, 160)
+
+func _on_Player_body_entered(body):
+	get_tree().reload_current_scene()
+	pass # Replace with function body.

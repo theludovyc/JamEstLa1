@@ -7,7 +7,7 @@ var noise:OpenSimplexNoise
 
 var speed:float
 
-var b:bool = false
+var move:bool = false
 
 func generateStart():
 	clear()
@@ -33,11 +33,8 @@ func generate(delta:int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !b:
+	if move:
 		position.x -= speed * delta
-		
-	if Input.is_action_just_pressed("ui_accept"):
-		b = !b
 	
 	if position.x < -320.0:
 		position.x += 960 

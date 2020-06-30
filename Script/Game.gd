@@ -10,6 +10,10 @@ onready var tileMaps = [$TileMap0, $TileMap1, $TileMap2]
 
 var delta:int = 0
 
+var score:int = 0
+
+var start:bool = false
+
 func initTilemap(index:int):
 	var tileMap = tileMaps[index]
 	
@@ -49,5 +53,26 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _process(delta):
+	if !start and Input.is_action_just_pressed("ui_accept"):
+		for i in tileMaps:
+			i.move = true
+		
+		$AudioStreamPlayer.play()
+		
+		$Timer.start()
+		
+		$Label2.visible = false
+		$Label3.visible = false
+		
+		start = true
+		
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 #	pass
+
+
+func _on_Timer_timeout():
+	score += 1
+	$Label.text = str(score)
+	pass # Replace with function body.
